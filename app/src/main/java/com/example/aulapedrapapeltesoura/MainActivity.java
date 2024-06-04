@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.aulapedrapapeltesoura.databinding.ActivityMainBinding;
@@ -24,19 +25,23 @@ public class MainActivity extends AppCompatActivity {
     }
     public void seleccionarPiedra(View view){
 
-        verificarGanador("Piedra");
+        verificarGanador("piedra");
+
 
 
     }
     public void seleccionarPapel(View view){
 
-        verificarGanador("Papel");
+        verificarGanador("papel");
+
 
 
     }
     public void seleccionarTijera(View view){
 
-        verificarGanador("Tijera");
+        verificarGanador("tijera");
+
+
 
 
     }
@@ -63,6 +68,41 @@ public class MainActivity extends AppCompatActivity {
     }
     private void verificarGanador(String escolhaUsuario){
         String escolhaApp = generarEscojaAleatoria();
+
+        TextView resultado = findViewById(R.id.resultado);
+
+        switch (escolhaApp) {
+            case "piedra":
+                if (escolhaUsuario == "piedra") {
+                    resultado.setText("Empate");
+                } else if (escolhaUsuario == "papel") {
+                    resultado.setText("Ganaste");
+                } else if (escolhaUsuario == "tijera") {
+                    resultado.setText("Perdiste");
+                }
+                break;
+
+            case "papel":
+                if (escolhaUsuario == "piedra") {
+                    resultado.setText("Perdiste");
+                } else if (escolhaUsuario == "papel") {
+                    resultado.setText("Empate");
+                } else if (escolhaUsuario == "tijera") {
+                    resultado.setText("Ganaste");
+                }
+                break;
+
+            case "tijera":
+                if (escolhaUsuario == "piedra") {
+                    resultado.setText("Ganaste");
+                } else if (escolhaUsuario == "papel") {
+                    resultado.setText("Perdiste");
+                } else if (escolhaUsuario == "tijera") {
+                    resultado.setText("Empate");
+                }
+                break;
+        }
+
 
 
 
