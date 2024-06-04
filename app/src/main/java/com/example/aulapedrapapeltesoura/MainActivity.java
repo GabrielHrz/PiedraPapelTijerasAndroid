@@ -4,19 +4,20 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.aulapedrapapeltesoura.databinding.ActivityMainBinding;
 
+import java.util.Random;
+
 public class MainActivity extends AppCompatActivity {
 
-    private ActivityMainBinding binding;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
-        binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(R.layout.activity_main);
 
 
@@ -39,8 +40,33 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
+
+    private String generarEscojaAleatoria() {
+        int numeroAleatorio = new Random().nextInt(3);
+        String[] opciones = {"piedra","papel","tijera"};
+        String opcion = opciones[numeroAleatorio];
+
+        ImageView imagenRobot = findViewById(R.id.imageView);
+        switch (opcion) {
+            case "piedra":
+                imagenRobot.setImageResource(R.drawable.pedra);
+                break;
+            case "papel":
+                imagenRobot.setImageResource(R.drawable.papel);
+                break;
+            case "tijera":
+                imagenRobot.setImageResource(R.drawable.tesoura);
+                break;
+        }
+
+        return opcion;
+    }
     private void verificarGanador(String escolhaUsuario){
-        Toast.makeText(this, "Item cliclado "+escolhaUsuario, Toast.LENGTH_SHORT).show();
+        String escolhaApp = generarEscojaAleatoria();
+
+
 
     }
+
+
 }
